@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Barcellona 2025 · Guida di Famiglia</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --terra: #C7522A;
+  --ocean: #1B4F72;
+  --gold: #E8A838;
+  --cream: #FAF3E0;
+  --sage: #5D8A60;
+  --dark: #1C1C1C;
+  --light: #fff;
+  --muted: #666;
+  --border: #e8e0d0;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Nunito',sans-serif; background:var(--cream); color:var(--dark); }
+
+/* ── TOP NAV ── */
+#topnav {
+  position:fixed; top:0; left:0; right:0; z-index:200;
+  background:rgba(255,255,255,0.97);
+  backdrop-filter:blur(10px);
+  border-bottom:2px solid var(--gold);
+  display:flex; align-items:center; justify-content:space-between;
+  padding:0 1.5rem; height:60px;
+  box-shadow:0 2px 16px rgba(0,0,0,0.07);
+}
+.nav-logo {
+  font-family:'Playfair Display',serif;
+  font-size:1.2rem; color:var(--ocean);
+  cursor:pointer; white-space:nowrap;
+}
+.nav-logo span { color:var(--terra); }
+.nav-links { display:flex; gap:0.2rem; flex-wrap:wrap; }
+.nav-btn {
+  background:none; border:none; cursor:pointer;
+  padding:6px 12px; border-radius:20px;
+  font-family:'Nunito',sans-serif; font-size:0.82rem; font-weight:700;
+  color:var(--ocean); transition:all 0.2s;
+}
+.nav-btn:hover, .nav-btn.active { background:var(--ocean); color:white; }
+.nav-btn.active { background:var(--terra); }
+
+/* ── PAGES ── */
+.page { display:none; padding-top:60px; min-height:100vh; }
+.page.active { display:block; animation:fadeIn 0.4s ease; }
+@keyframes fadeIn { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
+
+/* ── HERO HOME ── */
+.hero {
+  position:relative; height:calc(100vh - 60px);
+  background:linear-gradient(160deg,#0a2540,#1B4F72 60%,#8B3A1A);
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  text-align:center; overflow:hidden;
+}
+.hero-bg {
+  position:absolute; inset:0;
+  background:url('https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=1600&q=80') center/cover;
+  opacity:0.22;
+}
+.hero-content { position:relative; z-index:2; padding:2rem; }
+.hero-badge {
+  display:inline-block; background:var(--gold); color:var(--dark);
+  font-size:0.75rem; font-weight:800; letter-spacing:3px; text-transform:uppercase;
+  padding:6px 18px; border-radius:20px; margin-bottom:1.5rem;
+}
+.hero h1 { font-family:'Playfair Display',serif; font-size:clamp(3rem,9vw,7rem); color:white; line-height:1.05; }
+.hero h1 span { color:var(--gold); font-style:italic; }
+.hero-sub { color:rgba(255,255,255,0.8); font-size:1.1rem; margin-top:1rem; }
+.hero-info { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; margin-top:2rem; }
+.hero-info span {
+  background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.25);
+  color:white; padding:8px 18px; border-radius:30px; font-size:0.88rem;
+  backdrop-filter:blur(6px);
+}
+.hero-days { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; margin-top:2.5rem; }
+.day-pill {
+  background:white; color:var(--ocean); border:none; cursor:pointer;
+  padding:12px 22px; border-radius:40px; font-family:'Nunito',sans-serif;
+  font-weight:800; font-size:0.9rem; transition:all 0.2s;
+  box-shadow:0 4px 16px rgba(0,0,0,0.15);
+}
+.day-pill:hover { background:var(--gold); color:var(--dark); transform:translateY(-2px); }
+
+/* ── SECTION HEADER ── */
+.sec-header { padding:3rem 1.5rem 2rem; max-width:1100px; margin:0 auto; }
+.sec-label { font-size:0.72rem; font-weight:800; letter-spacing:4px; text-transform:uppercase; color:var(--terra); margin-bottom:0.4rem; }
+.sec-title { font-family:'Playfair Display',serif; font-size:clamp(1.8rem,5vw,3rem); color:var(--ocean); }
+
+/* ── TIMELINE HOME ── */
+.timeline-wrap { max-width:800px; margin:0 auto; padding:0 1.5rem 4rem; }
+.tl { position:relative; padding-left:2.5rem; }
+.tl::before {
+  content:''; position:absolute; left:10px; top:0; bottom:0; width:2px;
+  background:linear-gradient(to bottom,var(--gold),var(--terra));
+}
+.tl-item { position:relative; margin-bottom:1.5rem; }
+.tl-dot {
+  position:absolute; left:-2.5rem; top:0.7rem;
+  width:18px; height:18px; border-radius:50%;
+  background:var(--gold); border:3px solid var(--cream);
+  box-shadow:0 0 0 2px var(--gold);
+}
+.tl-box {
+  background:white; border-radius:14px; padding:1.2rem 1.4rem;
+  box-shadow:0 4px 18px rgba(0,0,0,0.07); cursor:pointer;
+  transition:transform 0.2s, box-shadow 0.2s; border-left:4px solid var(--gold);
+}
+.tl-box:hover { transform:translateX(4px); box-shadow:0 8px 28px rgba(0,0,0,0.13); }
+.tl-box h4 { color:var(--ocean); font-weight:800; margin-bottom:0.3rem; }
+.tl-box p { font-size:0.88rem; color:var(--muted); }
+.tl-box .go { float:right; color:var(--terra); font-weight:800; font-size:0.85rem; }
+
+/* ── DAY PAGE ── */
+.day-hero {
+  height:380px; position:relative; overflow:hidden;
+  display:flex; align-items:flex-end;
+}
+.day-hero img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+.day-hero-overlay {
+  position:absolute; inset:0;
+  background:linear-gradient(to top,rgba(0,0,0,0.75) 40%,transparent);
+}
+.day-hero-content { position:relative; z-index:2; padding:2rem; color:white; }
+.day-number-big { font-family:'Playfair Display',serif; font-size:4rem; color:var(--gold); line-height:1; }
+.day-date-lbl { font-size:0.85rem; opacity:0.75; }
+.day-title-big { font-family:'Playfair Display',serif; font-size:2rem; }
+
+.day-body { max-width:900px; margin:0 auto; padding:2.5rem 1.5rem 4rem; }
+
+.slot { display:flex; gap:1.2rem; margin-bottom:2rem; align-items:flex-start; }
+.slot-time {
+  flex-shrink:0; width:80px; text-align:center;
+  padding:0.6rem 0.4rem; border-radius:10px;
+  font-weight:800; font-size:0.78rem; line-height:1.4;
+}
+.slot-time.morning { background:#FFF3CD; color:#8a5a00; }
+.slot-time.afternoon { background:#D1ECF1; color:#0c5460; }
+.slot-time.evening { background:#2c3e50; color:white; }
+
+.slot-card {
+  flex:1; background:white; border-radius:16px;
+  box-shadow:0 4px 20px rgba(0,0,0,0.07); overflow:hidden;
+}
+.slot-card-img { width:100%; height:180px; object-fit:cover; display:block; }
+.slot-card-body { padding:1.2rem 1.4rem; }
+.slot-card-body h3 { color:var(--ocean); font-weight:800; margin-bottom:0.4rem; font-size:1.1rem; }
+.slot-card-body p { font-size:0.9rem; color:#555; line-height:1.6; margin-bottom:0.8rem; }
+
+.badge { display:inline-block; padding:3px 10px; border-radius:10px; font-size:0.7rem; font-weight:800; margin-right:6px; margin-bottom:6px; }
+.badge.free { background:#c8f0d0; color:#1a6b35; }
+.badge.must { background:#fde8cc; color:#8a4500; }
+.badge.book { background:#e3d0f8; color:#4a1590; }
+.badge.tip { background:#d0e8f8; color:#0a4a7a; }
+
+.maps-btn {
+  display:inline-flex; align-items:center; gap:6px;
+  background:var(--ocean); color:white; text-decoration:none;
+  padding:8px 16px; border-radius:20px; font-size:0.82rem; font-weight:700;
+  transition:background 0.2s;
+}
+.maps-btn:hover { background:var(--terra); }
+.maps-btn svg { width:14px; height:14px; fill:white; }
+
+/* ── RESTAURANT PAGE ── */
+.resto-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:1.5rem; padding:0 1.5rem 4rem; max-width:1100px; margin:0 auto; }
+.resto-card { background:white; border-radius:20px; overflow:hidden; box-shadow:0 4px 20px rgba(0,0,0,0.08); transition:transform 0.25s,box-shadow 0.25s; }
+.resto-card:hover { transform:translateY(-5px); box-shadow:0 10px 36px rgba(0,0,0,0.13); }
+.resto-card img { width:100%; height:200px; object-fit:cover; display:block; }
+.resto-card-body { padding:1.3rem; }
+.resto-card-body h3 { color:var(--ocean); font-weight:800; font-size:1.1rem; margin-bottom:0.2rem; }
+.resto-type { font-size:0.78rem; color:var(--terra); font-weight:700; margin-bottom:0.6rem; }
+.resto-card-body p { font-size:0.88rem; color:#555; line-height:1.5; margin-bottom:1rem; }
+.resto-footer { display:flex; align-items:center; justify-content:space-between; }
+.when-badge { font-size:0.72rem; background:#f0e8d0; color:#7a5a00; padding:4px 10px; border-radius:8px; font-weight:700; }
+
+/* ── CHICCHE PAGE ── */
+.chicche-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:1.5rem; padding:0 1.5rem 4rem; max-width:1100px; margin:0 auto; }
+.chicca-card {
+  background:linear-gradient(135deg,var(--ocean),#163d5a);
+  color:white; border-radius:20px; padding:2rem;
+  position:relative; overflow:hidden; transition:transform 0.3s;
+}
+.chicca-card:hover { transform:scale(1.03); }
+.chicca-card::before {
+  content:''; position:absolute; top:-40px; right:-40px;
+  width:120px; height:120px; background:rgba(232,168,56,0.12); border-radius:50%;
+}
+.chicca-icon { font-size:2.2rem; margin-bottom:1rem; }
+.chicca-card h3 { font-weight:800; font-size:1.05rem; margin-bottom:0.6rem; }
+.chicca-card p { font-size:0.88rem; opacity:0.87; line-height:1.6; }
+
+/* ── PRATICHE PAGE ── */
+.pratiche-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:1.2rem; padding:0 1.5rem 4rem; max-width:1100px; margin:0 auto; }
+.pratica-card { background:white; border-radius:16px; padding:1.5rem; box-shadow:0 4px 16px rgba(0,0,0,0.06); text-align:center; }
+.pratica-card .icon { font-size:2rem; margin-bottom:0.7rem; }
+.pratica-card h4 { color:var(--ocean); font-weight:800; margin-bottom:0.5rem; }
+.pratica-card p { font-size:0.88rem; color:#555; line-height:1.5; }
+
+/* ── FOOTER ── */
+footer { background:var(--dark); color:white; text-align:center; padding:3rem 1rem; }
+footer .ft { font-family:'Playfair Display',serif; font-size:1.6rem; color:var(--gold); margin-bottom:0.5rem; }
+footer p { opacity:0.55; font-size:0.88rem; }
+
+/* ── BACK BTN ── */
+.back-btn {
+  display:inline-flex; align-items:center; gap:6px;
+  background:none; border:2px solid var(--ocean); border-radius:20px;
+  color:var(--ocean); font-family:'Nunito',sans-serif; font-weight:700;
+  font-size:0.85rem; padding:7px 16px; cursor:pointer; margin:1rem 1.5rem 0;
+  transition:all 0.2s;
+}
+.back-btn:hover { background:var(--ocean); color:white; }
+
+@media(max-width:600px) {
+  .slot { flex-direction:column; }
+  .slot-time { width:100%; }
+  .nav-btn { padding:5px 8px; font-size:0.75rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- TOP NAV -->
+<nav id="topnav">
+  <div class="nav-logo" onclick="showPage('home')">Barcel<span>ona</span> 🌊</div>
+  <div class="nav-links">
+    <button class="nav-btn active" onclick="showPage('home')">Home</button>
+    <button class="nav-btn" onclick="showPage('day0')">Sab 18</button>
+    <button class="nav-btn" onclick="showPage('day1')">Dom 19</button>
+    <button class="nav-btn" onclick="showPage('day2')">Lun 20</button>
+    <button class="nav-btn" onclick="showPage('day3')">Mar 21</button>
+    <button class="nav-btn" onclick="showPage('ristoranti')">🍽 Ristoranti</button>
+    <button class="nav-btn" onclick="showPage('chicche')">✨ Chicche</button>
+    <button class="nav-btn" onclick="showPage('pratiche')">🧳 Info</button>
+  </div>
+</nav>
+
+<!-- ═══════════════════ HOME ═══════════════════ -->
+<div id="page-home" class="page active">
+  <div class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <div class="hero-badge">🌊 Guida di Famiglia · Aprile 2025</div>
+      <h1>Barcel<span>ona</span></h1>
+      <p class="hero-sub">4 giorni di magia tra Gaudí, tapas e avventure con i bambini</p>
+      <div class="hero-info">
+        <span>📅 18–21 Aprile</span>
+        <span>🏠 Carrer de Balmes, 276</span>
+        <span>👨‍👩‍👧 Famiglia con bambini</span>
+      </div>
+      <div class="hero-days">
+        <button class="day-pill" onclick="showPage('day0')">🛬 Sab 18 · Arrivo</button>
+        <button class="day-pill" onclick="showPage('day1')">⛪ Dom 19 · Gaudí</button>
+        <button class="day-pill" onclick="showPage('day2')">🏖 Lun 20 · Mare</button>
+        <button class="day-pill" onclick="showPage('day3')">🛒 Mar 21 · Rambla</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec-header">
+    <div class="sec-label">Il programma</div>
+    <div class="sec-title">Sequenza del viaggio</div>
+  </div>
+  <div class="timeline-wrap">
+    <div class="tl">
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-box" onclick="showPage('day0')">
+          <span class="go">→ Vai al giorno</span>
+          <h4>Sabato 18 Aprile — Arrivo & Prime impressioni</h4>
+          <p>Check-in a Balmes 276 · Fontana Montjuïc serale · Cena libera tra 3 opzioni vicino all'alloggio</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-box" onclick="showPage('day1')">
+          <span class="go">→ Vai al giorno</span>
+          <h4>Domenica 19 Aprile — Gaudí Day</h4>
+          <p>Sagrada Família gratis 9-10 · Brunch · Park Güell · Aperitivo magico · Tapas Txirimiri</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-box" onclick="showPage('day2')">
+          <span class="go">→ Vai al giorno</span>
+          <h4>Lunedì 20 Aprile — Mare & Natura</h4>
+          <p>Spiaggia Barceloneta · Parc de la Ciutadella · Mammuth · Barchette · Cena Colom Poblenou</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-box" onclick="showPage('day3')">
+          <span class="go">→ Vai al giorno</span>
+          <h4>Martedì 21 Aprile — Rambla & Modernismo</h4>
+          <p>Boqueria mattina presto · Rambla · Plaça Catalunya · Casa Batlló · Alice Secret Garden</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <div class="ft">¡Buen viaje! 🌊</div>
+    <p>Barcellona · 18–21 Aprile · Carrer de Balmes, 276</p>
+  </footer>
+</div>
+
+<!-- ═══════════════════ GIORNO 0 — SAB 18 ═══════════════════ -->
+<div id="page-day0" class="page">
+  <div class="day-hero">
+    <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=1200&q=80" alt="Barcellona arrivo">
+    <div class="day-hero-overlay"></div>
+    <div class="day-hero-content">
+      <div class="day-number-big">18</div>
+      <div class="day-date-lbl">Sabato Aprile</div>
+      <div class="day-title-big">Arrivo & Prime impressioni</div>
+    </div>
+  </div>
+  <button class="back-btn" onclick="showPage('home')">← Home</button>
+  <div class="day-body">
+
+    <div class="slot">
+      <div class="slot-time morning">🛬<br>POMERIGGIO<br>ARRIVO</div>
+      <div class="slot-card">
+        <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80" alt="Alloggio Eixample">
+        <div class="slot-card-body">
+          <h3>Check-in · Carrer de Balmes, 276</h3>
+          <span class="badge tip">Zona Eixample</span>
+          <p>Il quartiere Eixample è perfetto: ben collegato, sicuro per famiglie, pieno di ristoranti e bar a ogni angolo. Balmes è una delle vie principali — metro a 5 minuti. Lascia i bagagli e prenditi un'oretta per ambientarsi.</p>
+          <a class="maps-btn" href="https://maps.google.com/?q=Carrer+de+Balmes+276+Barcelona" target="_blank">
+            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg>
+            Apri in Maps
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="slot">
+      <div class="slot-time evening">🌊<br>SERA<br>21:00</div>
+      <div class="slot-card">
+        <img src="https://images.unsplash.com/photo-1558618047-f4e50e5e5e5f?w=800&q=80" alt="Fontana Montjuic">
+        <div class="slot-card-body">
+          <h3>Fontana Màgica di Montjuïc</h3>
+          <span class="badge must">Must!</span><span class="badge free">Gratis</span>
+          <p>Spettacolo di acqua, luci e musica ogni sera. Dura circa 30 minuti — inizia alle <strong>21:00</strong>. Con i bambini è uno spettacolo da sogno. Il posto migliore? Qualche gradino sul lato destro della fontana per vedere l'effetto dell'acqua da vicino. Arriva 15 minuti prima.</p>
+          <a class="maps-btn" href="https://maps.google.com/?q=Font+M%C3%A0gica+de+Montju%C3%AFc+Barcelona" target="_blank">
+            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg>
+            Apri in Maps
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="slot">
+      <div class="slot-time evening">🍽<br>CENA<br>3 opzioni</div>
+      <div class="slot-card">
+        <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80" alt="Ristorante">
+        <div class="slot-card-body">
+          <h3>Cena libera — scegli la tua opzione</h3>
+          <p>
+            🏬 <strong>Mussol</strong> — all'ultimo piano di Las Arenas (ex arena della corrida trasformata in centro commerciale), vista sulle fontane. Cucina catalana. <a href="https://maps.google.com/?q=Mussol+Las+Arenas+Barcelona" target="_blank" style="color:var(--terra)">Maps</a><br><br>
+            🥘 <strong>Cerveceria Catalana</strong> — tapas e montaditos, istituzione di Barcellona in Calle Mallorca, un po' più vicino. <a href="https://maps.google.com/?q=Cerveceria+Catalana+Barcelona" target="_blank" style="color:var(--terra)">Maps</a><br><br>
+            🍕 <strong>Crosta</strong> — pizzeria dall'altra parte di Balmes, comodissima per la prima sera. <a href="https://maps.google.com/?q=Crosta+Barcelona+Balmes" target="_blank" style="color:var(--terra)">Maps</a>
+          </p>
+          <span class="badge tip">Tutti a 5 min dall'alloggio</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <footer><div class="ft">Giorno 1 di 4 🌊</div><p><button style="background:var(--gold);border:none;padding:10px 24px;border-radius:20px;font-weight:800;cursor:pointer;margin-top:1rem" onclick="showPage('day1')">→ Domani: Gaudí Day</button></p></footer>
+</div>
+
+<!-- ═══════════════════ GIORNO 1 — DOM 19 ═══════════════════ -->
+<div id="page-day1" class="page">
+  <div class="day-hero">
+    <img src="https://images.unsplash.com/photo-1583422409516-2895a77efded?w=1200&q=80" alt="Sagrada Familia">
+    <div class="day-hero-overlay"></div>
+    <div class="day-hero-content">
+      <div class="day-number-big">19</div>
+      <div class="day-date-lbl">Domenica Aprile</div>
+      <div class="day-title-big">Gaudí Day ✨</div>
+    </div>
+  </div>
+  <button class="back-btn" onclick="showPage('home')">← Home</button>
+  <div class="day-body">
+
+    <div class="slot">
+      <div class="slot-time morning">⛪<br>MATTINA<br>9:00</div>
+      <div class="slot-card">
+        <img src="https://images.unsplash.com/photo-1583422409516-2895a77efded?w=800&q=80" alt="Sagrada Familia">
+        <div class="slot-card-body">
+          <h3>Sagrada Família</h3>
+          <span class="badge free">Gratis 9–10</span><span class="badge must">Icona assoluta</span>
+          <p>L'ingresso gratuito è solo nella prima ora della domenica: arriva alle <strong>8:45</strong> per essere tra i primi. Le vetrate colorate al mattino presto sono mozzafiato — la luce entra dalla facciata della Natività (lato est) creando un gioco di colori indescrivibile. <strong>Con i bambini:</strong> cerca gli animali scolpiti nelle colonne e nella facciata esterna — ci sono tartarughe, salamandre, iguane!</p>
+          <a class="maps-btn" href="https://maps.google.com/?q=Sagrada+Familia+Barcelona" target="_blank">
+            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg>
+            Apri in Maps
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="slot">
+      <div class="slot-time morning">☕<br>PRANZO<br>11:30</div>
+      <div class="slot-card">
+        <img src="https://images.unsplash.com/photo-1567306226416-28f0efdc88ce?w=800&q=80" alt="Brunch cafe">
+        <div class="slot-card-body">
+          <h3>Brunch · Giulietta Café</h3>
+          <span class="badge tip">Family friendly</span>
+          <p>Locale rilassato e accogliente vicino alla Sagrada Família. Ottimo per un brunch dopo la visita — menù variegato adatto anche ai bambini. Atmosfera curata, servizio gentile.</p>
+          <a class="maps-btn" href="https://maps.google.com/?q=Giulietta+Cafe+Barcelona" target="_blank">
+            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg>
+            Apri in Maps
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="slot">
+      <div class="slot-time afternoon">🦎<br>POMERIGGIO<br>14:30</div>
+      <div class="slot-card">
+        <img src="https://images.unsplash.com/photo-1560969184-10fe8719e047?w=800&q=80" alt="Park Guell">
+        <div class="slot-card-body">
+          <h3>Park Güell</h3>
+          <span class="badge book">Prenota online!</span><span class="badge must">Vista panoramica</span>
+          <p>Il parco fiabesco di Gaudí con mosaici colorati, il famoso dragone di ceramica all'ingresso e una vista mozzafiato su tutta Barcellona. <strong>Consiglio fondamentale:</strong> prenota l'accesso all'area monumentale online — costa ~10€/adulto ma evita ore di coda. Con i bambini: il dragone è il protagonista indiscusso!</p>
+          <a class="maps-btn" href="https://maps.google.com/?q=Park+G%C3%BCell+Barcelona" target="_blank">
+            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg>
+            Apri in Maps
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="slot">
+      <div class="slot-time evening">🧚<br>APERITIVO<br>19:00</div>
+      <div class="slot-card">
+        <img src="https://images.unsplash.com/photo-1555881400-74d7acaacd8b?w=800&q=80" alt="El Bosc de les Fades">
+        <div class="slot-card-body">
+          <h3>El Bosc de les Fades — Il Bosco delle Fate</h3>
+          <span class="badge must">Magico!</span>
+          <p>Uno dei locali più particolari di Barcellona — un bar-museo allestito come un bosco incantato con alberi veri al soffitto, fontanelle, nebbia artificiale e luci fatate. I bambini resteranno a bocca aperta. Si trova vicino alle Ramblas, nel Museu de Cera.</p>
+          <a class="maps-btn" href="https://maps.google.com/?q=El+Bosc+de+les+Fades+Barcelona" target="_blank">
+            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg>
+            Apri in Maps
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="slot">
+      <div class="slot-time evening">🍢<br>CENA<br>21:00</div>
+      <div class="slot-card">
+        <img src="https://images.unsplash.com/photo-1534080564583-6be75777b70a?w=800&q=80" alt="Tapas">
+        <div class="slot-card-body">
+          <h3>Cena · Txirimiri</h3>
+          <span class="badge tip">Pintxos baschi</span>
+          <p>Pintxos e tapas in stile basco — si scelgono dal bancone, già pronti. Ambiente informale e molto vivace. Uno dei modi più autentici di cenare a Barcellona. Prezzi onestissimi.</p>
+          <a class="maps-btn" href="https://maps.google.com/?q=Txirimiri+Barcelona" target="_blank">
+            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg>
+            Apri in Maps
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <footer><div class="ft">Giorno 2 di 4</div><p><button style="background:var(--gold);border:none;padding:10px 24px;border-radius:20px;font-weight:800;cursor:pointer;margin-top:1rem" onclick="showPage('day2')">→ Domani: Mare & Natura</button></p></footer>
+</div>
+
+<!-- ═══════════════════ GIORNO 2 — LUN 20 ═══════════════════ -->
+<div id="page-day2" class="page">
+  <div class="day-hero">
+    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&q=80" alt="Barceloneta">
+    <div class="day-hero-overlay"></div>
+    <div class="day-hero-content">
+      <div class="day-number-big">20</div>
+      <div class="day-date-lbl">Lunedì Aprile</div>
+      <div class="day-title-big">Mare & Natura 🏖</div>
+    </div>
+  </div>
+  <button class="back-btn" onclick="showPage('home')">← Home</button>
+  <div class="day-body">
+
+    <div class="slot">
+      <div class="slot-time morning">🏖<br>MATTINA<br>9:30</div>
+      <div class="slot-card">
+        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80" alt="Barceloneta Beach">
+        <div class="slot-card-body">
+          <h3>Spiaggia della Barceloneta</h3>
+          <span class="badge tip">Sabbia dorata</span>
+          <p>La spiaggia urbana più famosa di Barcellona — sabbia fine, acqua limpida ad aprile, gelaterie e chiringuitos. Al mattino è ancora tranquilla. Raggiungi con metro L4 fermata Barceloneta (10 min dall'alloggio). Porta acqua e qualcosa per i bambini — sdraio e ombrelloni si noleggiano in spiaggia.</p>
+          <a class="maps-btn" href="https://maps.google.com/?q=Barceloneta+Beach+Barcelona" target="_blank">
+            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg>
+            Apri in Maps
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="slot">
+      <div class="slot-time afternoon">🌳<br>POMERIGGIO<br>14:30</div>
+      <div class="slot-card">
+        <img src="https://images.unsplash.com/photo-1558618047-f4e50e5e5e5f?w=800&q=80" alt="Parc Ciutadella">
+        <div class="slot-card-body">
+          <h3>Parc de la Ciutadella — Il parco delle meraviglie</h3>
+          <span class="badge must">Perfetto con bimbi</span>
+          <p>
+            🦕 <strong>Mammuth preistorico</strong> — statua iconica nascosta tra i viali, i bimbi la adorano<br>
+            🚣 <strong>Laghetto con barchette</strong> a noleggio — imperdibile!<br>
+            👩‍🎨 <strong>Dama dell'Ombrello</strong> — scultura Art Nouveau tra i cespugli<br>
+            🦜 <strong>Pappagallini argentini</strong> liberi sugli alberi (sono 10.000 in città!)<br>
+            🎡 <strong>Area giochi</strong> e zona mini zoo<br>
+            🌊 <strong>Cascata monumentale</strong> ispirata alla Fontana di Trevi
+          </p>
+          <a class="maps-btn" href="https://maps.google.com/?q=Parc+de+la+Ciutadella+Barcelona" target="_blank">
+            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg>
+            Apri in Maps
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="slot">
+      <div class="slot-time evening">🌊<br>CENA<br>21:00</div>
+      <div class="slot-card">
+        <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80" alt="Colom Restaurant">
+        <div class="slot-card-body">
+          <h3>Cena · Colom Restaurant</h3>
+          <span class="badge book">Prenota il tavolo!</span><span class="badge tip">Zona Poblenou</span>
+          <p>Ristorante di cucina catalana in zona Poblenou, vicino alla spiaggia. Aperto fino a mezzanotte anche il lunedì — ottimo, perché molti locali sono chiusi. Ambiente curato, cucina di qualità. <strong>Chiamate o prenotate su TheFork prima di uscire la mattina.</strong></p>
+          <a class="maps-btn" href="https://maps.google.com/?q=Colom+Restaurant+Poblenou+Barcelona" target="_blank">
+            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg>
+            Apri in Maps
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <footer><div class="ft">Giorno 3 di 4</div><p><button style="background:var(--gold);border:none;padding:10px 24px;border-radius:20px;font-weight:800;cursor:pointer;margin-top:1rem" onclick="showPage('day3')">→ Domani: Rambla & Modernismo</button></p></footer>
+</div>
+
+<!-- ═══════════════════ GIORNO 3 — MAR 21 ═══════════════════ -->
+<div id="page-day3" class="page">
+  <div class="day-hero">
+    <img src="https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=1200&q=80" alt="Rambla Barcelona">
+    <div class="day-hero-overlay"></div>
+    <div class="day-hero-content">
+      <div class="day-number-big">21</div>
+      <div class="day-date-lbl">Martedì Aprile</div>
+      <div class="day-title-big">Rambla & Modernismo 🏛</div>
+    </div>
+  </div>
+  <button class="back-btn" onclick="showPage('home')">← Home</button>
+  <div class="day-body">
+
+    <div class="slot">
+      <div class="slot-time morning">🛒<br>MATTINA<br>9:00</div>
+      <div class="slot-card">
+        <img src="https://images.unsplash.com/photo-1555881400-74d7acaacd8b?w=800&q=80" alt="Boqueria">
+        <div class="slot-card-body">
+          <h3>Mercat de la Boqueria</h3>
+          <span class="badge must">Arriva entro le 10:30!</span>
+          <p>Il mercato più famoso di Barcellona — frutta esotica mozzafiato, pesce freschissimo, tapas al banco, succhi di frutta pressati al momento. <strong>Il segreto:</strong> i barcellonesi veri usano i banchi sul <em>lato sinistro</em> entrando — prezzi migliori e prodotti più freschi. I banchi centrali sono per i turisti. Evita dopo le 11 — diventa affollatissimo.</p>
+          <a class="maps-btn" href="https://maps.google.com/?q=Mercat+de+la+Boqueria+Barcelona" target="_blank">
+            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg>
+            Apri in Maps
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="slot">
+      <div class="slot-time morning">🌳<br>MATTINA<br>10:30</div>
+      <div class="slot-card">
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80" alt="La Rambla">
+        <div class="slot-card-body">
+          <h3>La Rambla & Plaça Catalunya</h3>
+          <span class="badge tip">Viale iconico</span>
+          <p>Percorri la Rambla dall'alto verso il basso — artisti di strada, kioschi di fiori, uccelli esotici. La Plaça Catalunya in fondo è il cuore della città con le famose colombe. <strong>Il "Chiosco delle Oche"</strong> — un'usanza storica barcellonese: un chiosco di uccelli esotici che resiste da secoli in mezzo alla piazza.</p>
+          <a class="maps-btn" href="https://maps.google.com/?q=La+Rambla+Barcelona" target="_blank">
+            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg>
+            Apri in Maps
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="slot">
+      <div class="slot-time afternoon">🏛<br>POMERIGGIO<br>15:00</div>
+      <div class="slot-card">
+        <img src="https://images.unsplash.com/photo-1564221710304-0b37c8b9d729?w=800&q=80" alt="Casa Batllo">
+        <div class="slot-card-body">
+          <h3>Casa Batlló — Il drago di Gaudí</h3>
+          <span class="badge must">Imperdibile</span><span class="badge book">Prenota online</span>
+          <p>Uno degli edifici più spettacolari e surreali del mondo. La facciata sembra un drago marino con scaglie di ceramica colorate. <strong>Con i bambini:</strong> racconta la leggenda di San Giorgio e il drago — Casa Batlló la rappresenta letteralmente! La visita con audio-guida è coinvolgente. <strong>Ora migliore:</strong> 17-18 con luce calda del tramonto.</p>
+          <a class="maps-btn" href="https://maps.google.com/?q=Casa+Batll%C3%B3+Barcelona" target="_blank">
+            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg>
+            Apri in Maps
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="slot">
+      <div class="slot-time evening">🌸<br>APERITIVO<br>19:30</div>
+      <div class="slot-card">
+        <img src="https://images.unsplash.com/photo-1567306226416-28f0efdc88ce?w=800&q=80" alt="Alice Secret Garden">
+        <div class="slot-card-body">
+          <h3>Alice Secret Garden</h3>
+          <span class="badge must">Finale magico!</span><span class="badge tip">Eixample</span>
+          <p>Un giardino segreto nascosto nel cuore dell'Eixample — atmosfera da Alice nel Paese delle Meraviglie con un patio interno quasi da fiaba. Cocktail, vermut, cibi leggeri. <strong>Adattissimo alle famiglie</strong> con menù per bambini. Il modo perfetto per chiudere il viaggio in bellezza.</p>
+          <a class="maps-btn" href="https://maps.google.com/?q=Alice+Secret+Garden+Barcelona" target="_blank">
+            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg>
+            Apri in Maps
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <footer><div class="ft">¡Hasta la próxima, Barcellona! 🌊</div><p style="margin-top:0.5rem; opacity:0.5">Fine del viaggio</p></footer>
+</div>
+
+<!-- ═══════════════════ RISTORANTI ═══════════════════ -->
+<div id="page-ristoranti" class="page">
+  <div class="sec-header">
+    <div class="sec-label">Dove mangiare</div>
+    <div class="sec-title">🍽 Tutti i ristoranti</div>
+  </div>
+  <div class="resto-grid">
+
+    <div class="resto-card">
+      <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&q=80" alt="Mussol">
+      <div class="resto-card-body">
+        <h3>Mussol · Las Arenas</h3>
+        <div class="resto-type">🏬 Cucina catalana · Plaza Espanya</div>
+        <p>All'ultimo piano del centro commerciale Las Arenas (ex arena della corrida). Vista panoramica sulle fontane di Montjuïc. Ottima cucina catalana, porzioni generose.</p>
+        <div class="resto-footer">
+          <span class="when-badge">📅 Sabato sera</span>
+          <a class="maps-btn" href="https://maps.google.com/?q=Mussol+Las+Arenas+Barcelona" target="_blank">Maps</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="resto-card">
+      <img src="https://images.unsplash.com/photo-1534080564583-6be75777b70a?w=600&q=80" alt="Cerveceria Catalana">
+      <div class="resto-card-body">
+        <h3>Cerveceria Catalana</h3>
+        <div class="resto-type">🥘 Tapas & Montaditos · Calle Mallorca</div>
+        <p>Istituzione di Barcellona per tapas e montaditos. Sempre vivace, qualità costante. Attesa possibile senza prenotazione — arriva presto o vai direttamente all'orario di apertura.</p>
+        <div class="resto-footer">
+          <span class="when-badge">📅 Sabato sera</span>
+          <a class="maps-btn" href="https://maps.google.com/?q=Cerveceria+Catalana+Barcelona" target="_blank">Maps</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="resto-card">
+      <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=600&q=80" alt="Crosta">
+      <div class="resto-card-body">
+        <h3>Crosta</h3>
+        <div class="resto-type">🍕 Pizzeria · Carrer de Balmes</div>
+        <p>Comodissima — dall'altra parte della strada rispetto all'alloggio. Perfetta per la prima sera dopo il viaggio. Pizze di qualità, prezzi onesti, niente stress.</p>
+        <div class="resto-footer">
+          <span class="when-badge">📅 Sabato sera</span>
+          <a class="maps-btn" href="https://maps.google.com/?q=Crosta+Barcelona+Balmes" target="_blank">Maps</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="resto-card">
+      <img src="https://images.unsplash.com/photo-1567306226416-28f0efdc88ce?w=600&q=80" alt="Giulietta Cafe">
+      <div class="resto-card-body">
+        <h3>Giulietta Café</h3>
+        <div class="resto-type">☕ Brunch · Zona Sagrada Família</div>
+        <p>Locale rilassato, atmosfera curata, menù variegato. Ideale per famiglie. Ottimo caffè e opzioni dolci e salate per un brunch ricco dopo la visita alla Sagrada Família.</p>
+        <div class="resto-footer">
+          <span class="when-badge">📅 Domenica brunch</span>
+          <a class="maps-btn" href="https://maps.google.com/?q=Giulietta+Cafe+Barcelona" target="_blank">Maps</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="resto-card">
+      <img src="https://images.unsplash.com/photo-1534080564583-6be75777b70a?w=600&q=80" alt="Txirimiri">
+      <div class="resto-card-body">
+        <h3>Txirimiri</h3>
+        <div class="resto-type">🍢 Pintxos & Tapas baschi</div>
+        <p>Autentici pintxos baschi — si scelgono dal bancone già pronti. Ambiente informale, vivace, prezzi onestissimi. Uno dei modi più autentici per cenare come un locale a Barcellona.</p>
+        <div class="resto-footer">
+          <span class="when-badge">📅 Domenica cena</span>
+          <a class="maps-btn" href="https://maps.google.com/?q=Txirimiri+Barcelona" target="_blank">Maps</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="resto-card">
+      <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&q=80" alt="Colom Restaurant">
+      <div class="resto-card-body">
+        <h3>Colom Restaurant</h3>
+        <div class="resto-type">🌊 Cucina catalana · Poblenou</div>
+        <p>Vicino alla spiaggia in zona Poblenou, aperto 12:00–00:00 anche il lunedì. Cucina barcellonese di qualità, ambiente curato. <strong>Prenota via TheFork</strong> — soprattutto con bambini è fondamentale avere il tavolo sicuro.</p>
+        <div class="resto-footer">
+          <span class="when-badge">📅 Lunedì cena</span>
+          <a class="maps-btn" href="https://maps.google.com/?q=Colom+Restaurant+Poblenou+Barcelona" target="_blank">Maps</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="resto-card">
+      <img src="https://images.unsplash.com/photo-1555881400-74d7acaacd8b?w=600&q=80" alt="El Bosc de les Fades">
+      <div class="resto-card-body">
+        <h3>El Bosc de les Fades</h3>
+        <div class="resto-type">🧚 Bar magico · Ramblas</div>
+        <p>Non un ristorante, ma un aperitivo obbligatorio! Bar-museo allestito come un bosco fatato con alberi veri al soffitto e luci fatate. I bambini restano a bocca aperta. Vicino al Museo della Cera.</p>
+        <div class="resto-footer">
+          <span class="when-badge">📅 Domenica aperitivo</span>
+          <a class="maps-btn" href="https://maps.google.com/?q=El+Bosc+de+les+Fades+Barcelona" target="_blank">Maps</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="resto-card">
+      <img src="https://images.unsplash.com/photo-1567306226416-28f0efdc88ce?w=600&q=80" alt="Alice Secret Garden">
+      <div class="resto-card-body">
+        <h3>Alice Secret Garden</h3>
+        <div class="resto-type">🌸 Cocktail bar · Eixample</div>
+        <p>Giardino segreto nascosto nell'Eixample con atmosfera da Alice nel Paese delle Meraviglie. Cocktail, vermut, cibi leggeri. Adatto alle famiglie con menù per bambini. Chiusura del viaggio perfetta.</p>
+        <div class="resto-footer">
+          <span class="when-badge">📅 Martedì aperitivo</span>
+          <a class="maps-btn" href="https://maps.google.com/?q=Alice+Secret+Garden+Barcelona" target="_blank">Maps</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <footer><div class="ft">Buon appetito! 🍽</div></footer>
+</div>
+
+<!-- ═══════════════════ CHICCHE ═══════════════════ -->
+<div id="page-chicche" class="page">
+  <div class="sec-header">
+    <div class="sec-label">Insider tips</div>
+    <div class="sec-title">✨ Chicche & Segreti di Barcellona</div>
+  </div>
+  <div class="chicche-grid">
+    <div class="chicca-card">
+      <div class="chicca-icon">🎨</div>
+      <h3>Gaudí oltre i soliti posti</h3>
+      <p>Oltre alla Sagrada e al Güell, cerca il <strong>Palau Güell</strong> vicino alle Ramblas (meno folla, straordinario) e la <strong>Casa Vicens</strong> nel quartiere Gràcia — la prima casa progettata da Gaudí, quasi ignorata dai turisti.</p>
+    </div>
+    <div class="chicca-card">
+      <div class="chicca-icon">🦜</div>
+      <h3>I pappagallini di Barcellona</h3>
+      <p>Parliamo dei <strong>parrocchetti argentini</strong> — importati negli anni '70, ora sono oltre 10.000 in città! Al Parc de la Ciutadella li trovi liberi sugli alberi. Volano in stormi numerosi — i bambini impazziscono.</p>
+    </div>
+    <div class="chicca-card">
+      <div class="chicca-icon">🌊</div>
+      <h3>Fontana di Montjuïc — il trucco</h3>
+      <p>Lo spettacolo è gratuito, ma il posto migliore è salire qualche gradino sul <strong>lato destro</strong> della fontana per vedere la proiezione sull'acqua da vicinissimo. Arriva 15 minuti prima per quel posto!</p>
+    </div>
+    <div class="chicca-card">
+      <div class="chicca-icon">🛒</div>
+      <h3>Boqueria — dove mangiano i locali</h3>
+      <p>I bar al centro del mercato (es. Bar Pinotxo) sono cari e turistici. I locali usano i banchi sul <strong>lato sinistro entrando</strong> — prezzi migliori, prodotti più freschi, niente folla. Il vero mercato è lì.</p>
+    </div>
+    <div class="chicca-card">
+      <div class="chicca-icon">🚇</div>
+      <h3>Metro come i barcellonesi</h3>
+      <p>La <strong>T-Casual</strong> (10 viaggi) è la card migliore per famiglie. Vale metro, bus e funicular. Comprarla alle macchinette T1/T2 — non usare i tornelli singoli che costano il doppio a corsa.</p>
+    </div>
+    <div class="chicca-card">
+      <div class="chicca-icon">🧁</div>
+      <h3>L'orxata di tigre — bevanda segreta</h3>
+      <p>La <strong>granissat de chufa</strong> (horchata di chufa/tigre) è una bevanda catalana dolce e fresca, quasi sconosciuta ai turisti. I bambini la adorano. Trovala nelle orchaterias locali, non nelle catene.</p>
+    </div>
+    <div class="chicca-card">
+      <div class="chicca-icon">📸</div>
+      <h3>Orari perfetti per le foto</h3>
+      <p>Sagrada Família: <strong>mattino presto</strong> per la luce nelle navate. Casa Batlló: <strong>ore 17-19</strong> con luce calda del tramonto sulla facciata ceramica. Park Güell: <strong>all'apertura</strong> — senza folla.</p>
+    </div>
+    <div class="chicca-card">
+      <div class="chicca-icon">🦕</div>
+      <h3>Il Mammuth dimenticato</h3>
+      <p>Al Parc de la Ciutadella c'è una statua preistorica di mammuth quasi ignorata dai turisti — i bambini la adorano! Vicino c'è anche la <strong>Dama dell'Ombrello</strong>, scultura Art Nouveau nascosta tra i cespugli.</p>
+    </div>
+    <div class="chicca-card">
+      <div class="chicca-icon">🏰</div>
+      <h3>Barcellona dall'alto — gratis</h3>
+      <p>Il <strong>Bunkers del Carmel</strong> (ex postazione antiaerea della guerra civile) offre il panorama più bello di Barcellona, completamente gratuito. Poco conosciuto, raggiungibile a piedi. Vista a 360° sulla città.</p>
+    </div>
+    <div class="chicca-card">
+      <div class="chicca-icon">🌮</div>
+      <h3>Dove NON mangiare sulla Rambla</h3>
+      <p>I ristoranti direttamente sulla Rambla hanno prezzi gonfiati e qualità mediocre. Basta girare in qualsiasi laterale (calle Tallers, Sant Pau, Escudellers) per trovare posti autentici e a metà prezzo.</p>
+    </div>
+    <div class="chicca-card">
+      <div class="chicca-icon">🎭</div>
+      <h3>Gli artisti di strada della Rambla</h3>
+      <p>Le statue viventi sulla Rambla sono una tradizione secolare. Le più particolari sono quelle che "reagiscono" solo quando gli metti una moneta — porta qualche moneta da 1€ per i bambini, è un gioco meraviglioso.</p>
+    </div>
+    <div class="chicca-card">
+      <div class="chicca-icon">🌅</div>
+      <h3>Il quartiere del Born — bonus</h3>
+      <p>Se avanza tempo, El Born è il quartiere più autentico e hipster di Barcellona — stradine medievali, bar con tavolini all'aperto, il Mercado del Born con le rovine della Barcelona del '700 visibili sotto i piedi.</p>
+    </div>
+  </div>
+  <footer><div class="ft">Ora sai tutto! ✨</div></footer>
+</div>
+
+<!-- ═══════════════════ INFO PRATICHE ═══════════════════ -->
+<div id="page-pratiche" class="page">
+  <div class="sec-header">
+    <div class="sec-label">Prima di partire</div>
+    <div class="sec-title">🧳 Info pratiche</div>
+  </div>
+  <div class="pratiche-grid">
+    <div class="pratica-card">
+      <div class="icon">🚇</div>
+      <h4>Trasporti</h4>
+      <p>Metro L4 per Barceloneta. L2/L3 per Rambla. Funicular per Montjuïc. <strong>T-Casual 10 viaggi</strong> — la scelta migliore per famiglie. Vale metro, bus e funicular.</p>
+    </div>
+    <div class="pratica-card">
+      <div class="icon">🌡</div>
+      <h4>Meteo Aprile</h4>
+      <p>18–22°C di giorno, 12–14°C la sera. Porta una <strong>felpa leggera</strong> per le serate all'aperto. Il vento dalla Barceloneta può sorprendere.</p>
+    </div>
+    <div class="pratica-card">
+      <div class="icon">💶</div>
+      <h4>Budget indicativo</h4>
+      <p>Sagrada Família ~26€/adulto · Park Güell ~10€ · Casa Batlló ~35€ · Tapas 2–4€ l'una · Menu del giorno 12–15€</p>
+    </div>
+    <div class="pratica-card">
+      <div class="icon">🕐</div>
+      <h4>Orari locali</h4>
+      <p>I barcellonesi cenano tardi: <strong>21:00–22:30</strong>. Con bambini prenota dalle 20:00. Molti musei sono chiusi il lunedì. Bar aperti fino a notte fonda.</p>
+    </div>
+    <div class="pratica-card">
+      <div class="icon">📱</div>
+      <h4>App utili</h4>
+      <p><strong>TMB Barcelona</strong> — metro offline · <strong>TheFork</strong> — prenota ristoranti · <strong>Google Maps</strong> scaricato offline · <strong>Barcelona.de</strong> — eventi</p>
+    </div>
+    <div class="pratica-card">
+      <div class="icon">🗣</div>
+      <h4>Qualche parola</h4>
+      <p>"Gràcies" = Grazie · "Bon dia" = Buongiorno · "Quant costa?" = Quanto costa? · "On és el metro?" = Dov'è la metro? Lo spagnolo funziona ovunque.</p>
+    </div>
+    <div class="pratica-card">
+      <div class="icon">👶</div>
+      <h4>Con i bambini</h4>
+      <p>Barcellona è <strong>molto family friendly</strong>. Passeggini OK ovunque. Cambi pannolini in quasi tutti i locali. Gelaterie ogni 50 metri. Parchi giochi nei quartieri residenziali.</p>
+    </div>
+    <div class="pratica-card">
+      <div class="icon">🔒</div>
+      <h4>Sicurezza</h4>
+      <p>Attenzione ai borseggiatori sulla Rambla e in metro. Usa <strong>borsa a tracolla davanti</strong>. Nessun problema di sicurezza per il resto — Barcellona è una città molto sicura per le famiglie.</p>
+    </div>
+    <div class="pratica-card">
+      <div class="icon">☎</div>
+      <h4>Numeri utili</h4>
+      <p>Emergenze: <strong>112</strong> · Polizia: <strong>091</strong> · Ospedale Hospital del Mar: <a href="https://maps.google.com/?q=Hospital+del+Mar+Barcelona" target="_blank" style="color:var(--terra)">Maps</a></p>
+    </div>
+    <div class="pratica-card">
+      <div class="icon">🏥</div>
+      <h4>Farmacia</h4>
+      <p>Riconoscibili dalla <strong>croce verde luminosa</strong>. Aperte 24/7 a rotazione — ce n'è sempre una aperta vicino. Il personale parla spesso italiano o inglese.</p>
+    </div>
+  </div>
+  <footer><div class="ft">¡Buen viaje! 🌊</div><p>Barcellona ti aspetta · Aprile 2025</p></footer>
+</div>
+
+<script>
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('page-' + id).classList.add('active');
+  const map = {home:0,day0:1,day1:2,day2:3,day3:4,ristoranti:5,chicche:6,pratiche:7};
+  const btns = document.querySelectorAll('.nav-btn');
+  if (map[id] !== undefined) btns[map[id]].classList.add('active');
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+</script>
+</body>
+</html>
